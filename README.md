@@ -8,7 +8,10 @@
 
 
 !['SysDesign'](./SysDesign.png)
-  
+
+
+!['Nodeforce Demo'](./Nodeforce-demo.PNG)
+
   
 <h2>🧐 Features</h2>
 
@@ -19,6 +22,8 @@ Here're some of the project's best features:
 *   Dependency Installation: NodeForce CLI simplifies the installation of common dependencies used in Node.js applications. It provides a streamlined approach to specify the required packages and automatically installs them with a single command.
 
 <h2>🛠️ Installation Steps:</h2>
+
+> Note:Please make sure you have bash installed as default terminal in your local machine.
 
 <p>1. Install Nodeforce's Dependencies via running this in your Terminal</p>
 

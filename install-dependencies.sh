@@ -1,1 +1,1 @@
-npm i ejs
+npm i

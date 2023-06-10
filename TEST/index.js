@@ -1,87 +1,55 @@
 import fs from "fs";
 import inquirer from "inquirer";
+import { exit } from "process";
 import readline from "readline"
-
-// fs.writeFile("hello.js",string,(err=>console.log(err)));
-
-
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout
-// });
-// let a;
-
-// rl.question('Enter something: ', (userInput) => {
-// a=userInput;
-// //   console.log('You entered: ' + userInput);
-//   rl.close();
-// });
-
-// console.log("Hello " + a);
-
-// let a;
-
-// async function saveguard(){
-//     try{
-//         progress=fs.readFileSync("hello2.js","utf-8",err=>console.log(err));
-//     }catch{
-//         (err=>console.log(err))
-//     }
-// }
+import {exec} from "child_process";
 
 
 
-// async function getName(){
-//     try{
-//    const answer = await  inquirer.prompt([
-//             {
-//                 type: 'input',
-//                 name: 'userName',
-//                 message: 'Enter something: '
-//             }
-//         ])
-//         a =await answer.userName
-//        await fs.writeFileSync("hello2.js",a,(err=>console.log("err!")))
 
-//      } catch{
-//             (error => {
-//             console.error(error);
-//         });
-//     }
-//     }
-let a,progress;
 
     async function getBranch(){
         try{
-
-        // const data = fs.readFile("hello2.js",(err)=>console.log(err))
-
-       const answer = await  inquirer.prompt([
+       const query1= await  inquirer.prompt([
                 {
                     type: 'input',
-                    name: 'userBranch',
-                    message: 'Enter '
+                    name: 'choice_of_proceeding',
+                    message: 'NodeForce CLI will create file structures on this working folder and install dependencies.Proceed?[y/n]'
                 }
             ])
+            let choice_of_proceeding;
+            choice_of_proceeding = await query1.choice_of_proceeding
 
-            a = await answer.userBranch
-            await fs.writeFileSync("hello3.js",a,(err=>console.log("err!")))
+            if(choice_of_proceeding=='y'){ await fs.writeFileSync("hello3.js", choice_of_proceeding + "Yes",(err=>console.log("err!")));
+            
+            var yourscript = exec('sh create-folder-struct.sh',
+                (error, stdout, stderr) => {
+                    console.log(stdout);
+                    console.log(stderr);
+                    if (error !== null) {
+                        console.log(`exec error: ${error}`);
+                    }
+                });
+            }
+            else exit(1);
 
-            progress=fs.readFileSync("hello3.js","utf-8",err=>console.log(err));
 
-            const answer2 = await  inquirer.prompt([
-                {
-                    type: 'input',
-                    name: 'usercock',
-                    message: 'Enter '
-                }
-            ])
 
-            a = await answer2.usercock
-            await fs.writeFileSync("hello3.js",progress + a,(err=>console.log("err!")))
 
-    
-         } catch(error){
+
+
+
+
+
+
+
+
+
+
+
+
+
+        } catch(error){
            
                 console.error(error);
             };
@@ -94,3 +62,4 @@ let a,progress;
     // const data =fs.readFileSync("hello2.js",'utf-8',(err)=>console.log(err))
     // console.log(data + `\nhe\nllo
     // World!`)
+             // progress=fs.readFileSync("hello3.js","utf-8",err=>console.log(err));

@@ -11,6 +11,8 @@ import { ROUTESCRIPT } from './Scripts/Routes.js'
 import { VIEWSCRIPT } from './Scripts/views.js'
 import { promisify } from 'util';
 const executeCommand = promisify(exec);
+import { asciiart } from './asciiart.js';
+
 // console.log(DATABASESCRIPT)
 // console.log(APISCRIPT)
 // console.log(DOCSCRIPT)
@@ -21,6 +23,12 @@ const executeCommand = promisify(exec);
 
 async function NODEFORCE() {
     try {
+        console.log("\n");
+        console.log("\n");
+      
+        console.log(asciiart);
+        console.log("\n");
+        
         const query1 = await inquirer.prompt([
             {
                 type: 'input',
@@ -45,10 +53,10 @@ async function NODEFORCE() {
 
             await executeCommand('sh create-folder-struct.sh');
 
-                    fs.writeFileSync("server/API/RESTRAPI.js", APISCRIPT, e => console.log(e))
+                    fs.writeFileSync("server/API/RESTAPI.js", APISCRIPT, e => console.log(e))
                     fs.writeFileSync("server/Database/db.sql", DATABASESCRIPT, e => console.log(e))
                     fs.writeFileSync("server/Docs/Documentation", DOCSCRIPT, e => console.log(e))
-                    fs.writeFileSync("server/Routes/App.js", ROUTESCRIPT, e => console.log(e))
+                    fs.writeFileSync("server/Routes/Route.js", ROUTESCRIPT, e => console.log(e))
                     fs.writeFileSync("server/Server-frontend/views.ejs", VIEWSCRIPT, e => console.log(e))
                 
         }
@@ -78,6 +86,9 @@ async function NODEFORCE() {
             writedependencies = query3.writedependencies;
             await fs.writeFileSync("install-dependencies.sh", "npm i " + writedependencies, (err => console.log("err!")))
 
+            console.log("Installing Packages.This might take some time.")
+            console.log("Loading...");
+
             var RUNDEPENDENCYINSTALLER = exec('sh install-dependencies.sh',
                 (error, stdout, stderr) => {
                     console.log(stdout);
@@ -86,9 +97,10 @@ async function NODEFORCE() {
                         console.log(`exec error: ${error}`);
                     }
                 });
+                console.log('Process Exited with Success - Thankyou for using Nodeforce!');
         }
         else {
-            console.log('cool');
+            console.log('Process Exited with Success - Thankyou for using Nodeforce!');
         }
     }
     catch (error) {

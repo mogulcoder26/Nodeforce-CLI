@@ -4,7 +4,7 @@ const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
   
-  const html = "
+  const html = \`
     <!DOCTYPE html>
     <html>
       <head>
@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
         <h1>Hello, World!</h1>
       </body>
     </html>
-  ";
+  \`;
   
   res.end(html);
 });

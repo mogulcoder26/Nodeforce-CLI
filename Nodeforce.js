@@ -1,14 +1,16 @@
+#!/usr/bin/env node
 import fs from "fs";
 import inquirer from "inquirer";
 import { exit } from "process";
 import readline from "readline"
 import { exec } from "child_process";
-import { APISCRIPT } from '../Scripts/API.js'
-import { DATABASESCRIPT } from '../Scripts/Database.js'
-import { DOCSCRIPT } from '../Scripts/Docs.js'
-import { ROUTESCRIPT } from '../Scripts/Routes.js'
-import { VIEWSCRIPT } from '../Scripts/views.js'
-
+import { APISCRIPT } from './Scripts/API.js'
+import { DATABASESCRIPT } from './Scripts/Database.js'
+import { DOCSCRIPT } from './Scripts/Docs.js'
+import { ROUTESCRIPT } from './Scripts/Routes.js'
+import { VIEWSCRIPT } from './Scripts/views.js'
+import { promisify } from 'util';
+const executeCommand = promisify(exec);
 // console.log(DATABASESCRIPT)
 // console.log(APISCRIPT)
 // console.log(DOCSCRIPT)
@@ -32,19 +34,23 @@ async function NODEFORCE() {
 
         if (choice_of_proceeding == 'y') {
 
-            await exec('sh create-folder-struct.sh',
-                (error, stdout, stderr) => {
-                    console.log(stdout);
-                    console.log(stderr);
-                    if (error !== null) {
-                        console.log(`exec error: ${error}`);
-                    }
-                });
-             fs.writeFileSync("server/API/RESTRAPI.js", APISCRIPT, e => console.log(e))
-             fs.writeFileSync("server/Database/db.sql", DATABASESCRIPT, e => console.log(e))
-             fs.writeFileSync("server/Docs/Documentation", DOCSCRIPT, e => console.log(e))
-             fs.writeFileSync("server/Routes/App.js", ROUTESCRIPT, e => console.log(e))
-            fs.writeFileSync("server/Server-frontend/views.ejs", VIEWSCRIPT, e => console.log(e))
+            // await exec('sh create-folder-struct.sh',
+            //     (error, stdout, stderr) => {
+            //         console.log(stdout);
+            //         console.log(stderr);
+            //         if (error !== null) {
+            //             console.log(`exec error: ${error}`);
+            //         }
+            //     })
+
+            await executeCommand('sh create-folder-struct.sh');
+
+                    fs.writeFileSync("server/API/RESTRAPI.js", APISCRIPT, e => console.log(e))
+                    fs.writeFileSync("server/Database/db.sql", DATABASESCRIPT, e => console.log(e))
+                    fs.writeFileSync("server/Docs/Documentation", DOCSCRIPT, e => console.log(e))
+                    fs.writeFileSync("server/Routes/App.js", ROUTESCRIPT, e => console.log(e))
+                    fs.writeFileSync("server/Server-frontend/views.ejs", VIEWSCRIPT, e => console.log(e))
+                
         }
         else exit(1);
 

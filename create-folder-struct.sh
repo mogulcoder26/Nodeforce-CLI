@@ -9,13 +9,16 @@ touch RESTAPI.js
 cd ..
 mkdir Routes
 cd  Routes
-
+touch Route.js
+cd ..
 mkdir Docs
 mkdir Test
 mkdir Logic
 mkdir Middleware
 mkdir Server-frontend
 mkdir Database
+cd Database
+touch db.sql
 cd ..
 touch .gitignoreISKA
 touch READMEISKA.md

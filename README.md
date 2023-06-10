@@ -7,10 +7,10 @@
 <p id="description">NodeForce CLI is a powerful command-line tool designed to significantly reduce the time required to set up Node.js applications. It automates the creation of folder structures generates useful code files and installs dependencies enabling developers to kickstart their projects effortlessly</p>
 
 
-!['SysDesign'](./SysDesign.png)
+!['SysDesign'](./Snaps/SysDesign.png)
 
 
-!['Nodeforce Demo'](./Nodeforce-demo.PNG)
+!['Nodeforce Demo'](./Snaps/Nodeforce-demo.PNG)
 
   
 <h2>🧐 Features</h2>

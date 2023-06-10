@@ -11,7 +11,7 @@ import { ROUTESCRIPT } from './Scripts/Routes.js'
 import { VIEWSCRIPT } from './Scripts/views.js'
 import { promisify } from 'util';
 const executeCommand = promisify(exec);
-import { asciiart } from './asciiart.js';
+import { asciiart } from './Art/asciiart.js';
 
 // console.log(DATABASESCRIPT)
 // console.log(APISCRIPT)
@@ -28,7 +28,7 @@ async function NODEFORCE() {
       
         console.log(asciiart);
         console.log("\n");
-        
+
         const query1 = await inquirer.prompt([
             {
                 type: 'input',
